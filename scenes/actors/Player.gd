@@ -7,7 +7,7 @@ var moving_area = null
 var wait = false
 
 func _ready():
-	set_fixed_process(true)
+	set_physics_process(true)
 	set_process_input(true)
 	
 	add_to_group("player")
@@ -22,17 +22,17 @@ func _ready():
 	pass
 
 func _input(event):
-	if event.type != InputEvent.KEY:
+	if !event is InputEventKey:
 		return 
 	if event.is_pressed() and event.scancode == KEY_UP and event.is_echo() == false:
 		var normal = Vector3(sin(-target_direction), 0.0, cos(-target_direction))
-		test_position = target_position + 2*normal
-		moving_area.set_translation(test_position)
+		test_position = target_position + 2 * normal
+		moving_area.translation = test_position
 		wait = true
 	elif event.is_pressed() and event.scancode == KEY_DOWN and event.is_echo() == false:
 		var normal = Vector3(sin(-target_direction), 0.0, cos(-target_direction))
 		test_position = target_position - 2*normal
-		moving_area.set_translation(test_position)
+		moving_area.translation = test_position
 		wait = true
 	elif event.is_pressed() and event.scancode == KEY_LEFT and event.is_echo() == false:
 		test_position = target_position
@@ -41,7 +41,7 @@ func _input(event):
 		test_position = target_position
 		target_direction += deg2rad(90)
 
-func _fixed_process(delta):
+func _physics_process(delta):
 	# Update translation
 	var new_pos = get_translation()
 	new_pos.x = lerp(new_pos.x, target_position.x, 0.1)
@@ -60,4 +60,5 @@ func _fixed_process(delta):
 	else:
 		test_position = target_position
 		moving_area.set_translation(target_position)
+
 

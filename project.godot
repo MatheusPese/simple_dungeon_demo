@@ -1,0 +1,17 @@
+[application]
+
+config/icon = "res://icon.png"
+config/name = "simple_dungeon_demo"
+run/main_scene = "res://scenes/dungeons/Dungeon.tscn"
+
+[autoload]
+
+global = "*res://global.gd"
+
+[importer_defaults]
+
+texture = {
+"flags/filter": true,
+"flags/mipmaps": true
+}
+

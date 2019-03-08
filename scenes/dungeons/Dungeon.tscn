@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=1]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scenes/dungeons/Dungeon.gd" type="Script" id=1]
 [ext_resource path="res://scenes/tilemaps/Dungeon_meshlibrary.tres" type="MeshLibrary" id=2]
@@ -8,56 +8,53 @@
 [ext_resource path="res://assets/celing.png" type="Texture" id=6]
 [ext_resource path="res://assets/floor.png" type="Texture" id=7]
 
-[node name="Dungeon" type="Spatial"]
+[node name="Dungeon" type="Spatial" index="0"]
 
-_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-script/script = ExtResource( 1 )
+script = ExtResource( 1 )
 dungeon_h_size = 10
 dungeon_v_size = 10
 
-[node name="Dungeon_gridmap" type="GridMap" parent="."]
+[node name="Dungeon_gridmap" type="GridMap" parent="." index="0"]
 
-_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-theme/theme = ExtResource( 2 )
-theme/bake = false
-lighting/bake = false
-cell/size = 2.0
-cell/octant_size = 4
-cell/center_x = true
-cell/center_y = true
-cell/center_z = true
-cell/scale = 1.0
-data = { "cells":IntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 0, 1, 0, 1, 1, 1, 3, 1, 0, 5, 1, 0, 9, 1, 0, 0, 2, 0, 1, 2, 0, 3, 2, 0, 5, 2, 0, 9, 2, 0, 0, 3, 0, 3, 3, 0, 5, 3, 0, 9, 3, 0, 0, 4, 0, 2, 4, 0, 3, 4, 0, 5, 4, 0, 6, 4, 0, 7, 4, 1441794, 8, 4, 0, 9, 4, 0, 0, 5, 0, 5, 5, 2, 9, 5, 0, 0, 6, 0, 1, 6, 0, 2, 6, 0, 3, 6, 0, 5, 6, 0, 6, 6, 0, 7, 6, 0, 9, 6, 0, 0, 7, 0, 1, 7, 655361, 2, 7, 0, 3, 7, 0, 5, 7, 0, 7, 7, 0, 9, 7, 0, 0, 8, 0, 3, 8, 655362, 9, 8, 0, 0, 9, 0, 1, 9, 0, 2, 9, 0, 3, 9, 0, 4, 9, 0, 5, 9, 0, 6, 9, 0, 7, 9, 0, 8, 9, 0, 9, 9, 0 ) }
-__meta__ = { "_editor_clip_":0, "_editor_floor_":Vector3( 0, 0, 0 ) }
+theme = ExtResource( 2 )
+cell_size = Vector3( 2, 2, 2 )
+cell_octant_size = 4
+cell_center_x = true
+cell_center_y = true
+cell_center_z = true
+cell_scale = 1.0
+collision_layer = 1
+collision_mask = 1
+data = {
+"cells": PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 0, 1, 0, 1, 1, 1, 3, 1, 0, 5, 1, 0, 9, 1, 0, 0, 2, 0, 1, 2, 0, 3, 2, 0, 5, 2, 0, 9, 2, 0, 0, 3, 0, 3, 3, 0, 5, 3, 0, 9, 3, 0, 0, 4, 0, 2, 4, 0, 3, 4, 0, 5, 4, 0, 6, 4, 0, 7, 4, 1441794, 8, 4, 0, 9, 4, 0, 0, 5, 0, 5, 5, 2, 9, 5, 0, 0, 6, 0, 1, 6, 0, 2, 6, 0, 3, 6, 0, 5, 6, 0, 6, 6, 0, 7, 6, 0, 9, 6, 0, 0, 7, 0, 1, 7, 655361, 2, 7, 0, 3, 7, 0, 5, 7, 0, 7, 7, 0, 9, 7, 0, 0, 8, 0, 3, 8, 655362, 9, 8, 0, 0, 9, 0, 1, 9, 0, 2, 9, 0, 3, 9, 0, 4, 9, 0, 5, 9, 0, 6, 9, 0, 7, 9, 0, 8, 9, 0, 9, 9, 0 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 0, 0 )
+}
 
-[node name="Player" parent="." instance=ExtResource( 3 )]
+[node name="Player" parent="." index="1" instance=ExtResource( 3 )]
 
-transform/local = Transform( -1, 0, 3.25841e-07, 0, 1, 0, -3.25841e-07, 0, -1, 9, 1, 3 )
+transform = Transform( -1, 0, 3.25841e-07, 0, 1, 0, -3.25841e-07, 0, -1, 9, 1, 3 )
 
-[node name="Hud" parent="." instance=ExtResource( 4 )]
+[node name="Hud" parent="." index="2" instance=ExtResource( 4 )]
 
-[node name="Godot" parent="." instance=ExtResource( 5 )]
+[node name="Godot" parent="." index="3" instance=ExtResource( 5 )]
 
-transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 1, 5 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 1, 5 )
 
-[node name="Ceiling" type="Sprite3D" parent="."]
+[node name="Ceiling" type="Sprite3D" parent="." index="4"]
 
-_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1796, 0, 0.991346 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1796, 0, 0.991346 )
 layers = 1
-geometry/visible = true
-geometry/material_override = null
-geometry/cast_shadow = 1
-geometry/receive_shadows = true
-geometry/range_begin = 0.0
-geometry/range_end = 0.0
-geometry/extra_cull_margin = 0.0
-geometry/billboard = false
-geometry/billboard_y = false
-geometry/depth_scale = false
-geometry/visible_in_all_rooms = false
-geometry/use_baked_light = false
-geometry/baked_light_tex_id = 0
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
 centered = true
 offset = Vector2( 0, 0 )
 flip_h = false
@@ -66,34 +63,29 @@ modulate = Color( 1, 1, 1, 1 )
 opacity = 1.0
 pixel_size = 0.0625
 axis = 1
-flags/transparent = false
-flags/shaded = true
-flags/alpha_cut = 0
+transparent = false
+shaded = true
+double_sided = true
+alpha_cut = 0
 texture = ExtResource( 6 )
 vframes = 1
 hframes = 1
 frame = 0
-region = true
+region_enabled = true
 region_rect = Rect2( 0, 0, 32, 32 )
 
-[node name="Floor" type="Sprite3D" parent="."]
+[node name="Floor" type="Sprite3D" parent="." index="5"]
 
-_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.30172, 0, 0.991346 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.30172, 0, 0.991346 )
 layers = 1
-geometry/visible = true
-geometry/material_override = null
-geometry/cast_shadow = 1
-geometry/receive_shadows = true
-geometry/range_begin = 0.0
-geometry/range_end = 0.0
-geometry/extra_cull_margin = 0.0
-geometry/billboard = false
-geometry/billboard_y = false
-geometry/depth_scale = false
-geometry/visible_in_all_rooms = false
-geometry/use_baked_light = false
-geometry/baked_light_tex_id = 0
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
 centered = true
 offset = Vector2( 0, 0 )
 flip_h = false
@@ -102,14 +94,15 @@ modulate = Color( 1, 1, 1, 1 )
 opacity = 1.0
 pixel_size = 0.0625
 axis = 1
-flags/transparent = false
-flags/shaded = true
-flags/alpha_cut = 0
+transparent = false
+shaded = true
+double_sided = true
+alpha_cut = 0
 texture = ExtResource( 7 )
 vframes = 1
 hframes = 1
 frame = 0
-region = true
+region_enabled = true
 region_rect = Rect2( 0, 0, 32, 32 )
 
 
